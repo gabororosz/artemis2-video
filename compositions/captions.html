@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+      .cap-group {
+        position: absolute;
+        left: 0; right: 0;
+        bottom: 96px;
+        text-align: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 52px;
+        letter-spacing: -0.005em;
+        color: #E8EEF7;
+        text-shadow: 0 2px 16px rgba(5,7,13,0.9), 0 0 2px rgba(5,7,13,0.8);
+        opacity: 0;
+        visibility: hidden;
+        padding: 0 120px;
+        line-height: 1.15;
+      }
+      .cap-word {
+        display: inline-block;
+        margin: 0 0.18em;
+        opacity: 0.55;
+      }
+      .cap-word.active {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="captions-root"
+      data-composition-id="captions"
+      data-timeline-role="captions"
+      data-caption-root="true"
+      data-start="0"
+      data-duration="52.8"
+      data-width="1920"
+      data-height="1080"
+      style="width:1920px;height:1080px;position:relative;overflow:hidden;background:transparent;"
+    >
+      <div id="cap-container" style="position:absolute;inset:0;"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+
+      // Transcript-derived groups. Timestamps are scene-local (narration t=0 = composition t=0).
+      // Corrections applied: Weissman → Wiseman, Kark → Koch.
+      var GROUPS = [
+        { start: 0.03, end: 2.55, words: [
+          { t: "April",    s: 0.03, e: 0.47 },
+          { t: "1st,",     s: 0.47, e: 1.11 },
+          { t: "2026.",    s: 1.11, e: 2.36 },
+        ]},
+        { start: 2.40, end: 4.00, words: [
+          { t: "For",      s: 2.44, e: 2.54 },
+          { t: "the",      s: 2.54, e: 2.66 },
+          { t: "first",    s: 2.69, e: 2.89 },
+          { t: "time",     s: 2.89, e: 3.05 },
+          { t: "in",       s: 3.09, e: 3.14 },
+          { t: "over",     s: 3.24, e: 3.29 },
+          { t: "50",       s: 3.38, e: 3.61 },
+          { t: "years,",   s: 3.61, e: 3.92 },
+        ]},
+        { start: 3.93, end: 5.75, words: [
+          { t: "humans",   s: 3.93, e: 4.23 },
+          { t: "are",      s: 4.25, e: 4.32 },
+          { t: "leaving",  s: 4.32, e: 4.76 },
+          { t: "Earth",    s: 4.76, e: 5.05 },
+          { t: "orbit.",   s: 5.10, e: 5.60 },
+        ]},
+        { start: 5.60, end: 7.25, words: [
+          { t: "This",     s: 5.63, e: 5.89 },
+          { t: "is",       s: 5.99, e: 6.05 },
+          { t: "Artemis",  s: 6.05, e: 6.58 },
+          { t: "II.",      s: 6.58, e: 7.06 },
+        ]},
+        { start: 7.06, end: 8.15, words: [
+          { t: "The",      s: 7.06, e: 7.10 },
+          { t: "space",    s: 7.20, e: 7.33 },
+          { t: "launch",   s: 7.33, e: 7.90 },
+          { t: "system",   s: 7.90, e: 7.96 },
+        ]},
+        { start: 8.00, end: 9.25, words: [
+          { t: "carries",     s: 8.04, e: 8.36 },
+          { t: "four",        s: 8.36, e: 8.55 },
+          { t: "astronauts",  s: 8.55, e: 9.08 },
+        ]},
+        { start: 9.08, end: 11.10, words: [
+          { t: "into",        s: 9.08, e: 9.28 },
+          { t: "a",           s: 9.28, e: 9.33 },
+          { t: "high",        s: 9.33, e: 9.38 },
+          { t: "elliptical",  s: 9.53, e: 10.06 },
+          { t: "parking",     s: 10.09, e: 10.49 },
+          { t: "orbit,",      s: 10.49, e: 10.92 },
+        ]},
+        { start: 10.90, end: 12.00, words: [
+          { t: "24",       s: 10.92, e: 11.29 },
+          { t: "hours",    s: 11.29, e: 11.56 },
+          { t: "of",       s: 11.66, e: 11.72 },
+          { t: "system",   s: 11.72, e: 11.80 },
+        ]},
+        { start: 12.30, end: 14.65, words: [
+          { t: "checkouts",   s: 12.34, e: 12.65 },
+          { t: "before",      s: 12.65, e: 13.02 },
+          { t: "committing",  s: 13.02, e: 13.64 },
+          { t: "to",          s: 13.64, e: 13.76 },
+          { t: "the",         s: 13.76, e: 13.87 },
+          { t: "moon.",       s: 13.99, e: 14.46 },
+        ]},
+        { start: 14.45, end: 15.80, words: [
+          { t: "A",            s: 14.46, e: 14.50 },
+          { t: "six-minute",   s: 14.50, e: 15.00 },
+          { t: "engine",       s: 15.03, e: 15.28 },
+          { t: "burn,",        s: 15.38, e: 15.62 },
+        ]},
+        { start: 15.70, end: 17.25, words: [
+          { t: "Trans-Lunar",  s: 15.73, e: 16.37 },
+          { t: "Injection,",   s: 16.37, e: 17.04 },
+        ]},
+        { start: 17.25, end: 19.70, words: [
+          { t: "accelerates",  s: 17.30, e: 17.70 },
+          { t: "Orion",        s: 17.70, e: 18.00 },
+          { t: "by",           s: 18.00, e: 18.12 },
+          { t: "three",        s: 18.12, e: 18.42 },
+          { t: "kilometers",   s: 18.42, e: 19.02 },
+          { t: "per",          s: 19.02, e: 19.20 },
+          { t: "second",       s: 19.20, e: 19.51 },
+        ]},
+        { start: 19.50, end: 21.80, words: [
+          { t: "onto",         s: 19.56, e: 19.84 },
+          { t: "a",            s: 19.91, e: 19.95 },
+          { t: "free-return",  s: 19.95, e: 20.75 },
+          { t: "trajectory.",  s: 20.75, e: 21.61 },
+        ]},
+        { start: 21.55, end: 23.80, words: [
+          { t: "Four",         s: 21.61, e: 22.18 },
+          { t: "days",         s: 22.18, e: 22.36 },
+          { t: "of",           s: 22.36, e: 22.47 },
+          { t: "outbound",     s: 22.53, e: 23.15 },
+          { t: "coast.",       s: 23.15, e: 23.61 },
+        ]},
+        { start: 23.75, end: 25.10, words: [
+          { t: "Earth",        s: 23.81, e: 23.96 },
+          { t: "shrinks",      s: 23.96, e: 24.20 },
+          { t: "behind.",      s: 24.20, e: 24.93 },
+        ]},
+        { start: 24.95, end: 26.10, words: [
+          { t: "The",          s: 24.98, e: 25.07 },
+          { t: "moon",         s: 25.13, e: 25.16 },
+          { t: "grows",        s: 25.41, e: 25.48 },
+          { t: "ahead.",       s: 25.51, e: 25.96 },
+        ]},
+        { start: 25.95, end: 27.65, words: [
+          { t: "No",           s: 25.96, e: 26.03 },
+          { t: "shortcuts,",   s: 26.07, e: 26.75 },
+          { t: "no",           s: 26.75, e: 26.86 },
+          { t: "reverse.",     s: 26.86, e: 27.47 },
+        ]},
+        { start: 27.70, end: 28.45, words: [
+          { t: "April",        s: 27.75, e: 27.77 },
+          { t: "6th.",         s: 27.78, e: 28.25 },
+        ]},
+        { start: 28.20, end: 29.45, words: [
+          { t: "Closest",      s: 28.25, e: 28.62 },
+          { t: "approach,",    s: 28.72, e: 29.27 },
+        ]},
+        { start: 29.35, end: 30.95, words: [
+          { t: "6,545",        s: 29.41, e: 29.99 },
+          { t: "kilometers",   s: 30.04, e: 30.62 },
+          { t: "above",        s: 30.62, e: 30.76 },
+        ]},
+        { start: 31.00, end: 32.20, words: [
+          { t: "the",          s: 31.02, e: 31.10 },
+          { t: "lunar",        s: 31.13, e: 31.39 },
+          { t: "far",          s: 31.49, e: 31.59 },
+          { t: "side.",        s: 31.59, e: 32.02 },
+        ]},
+        { start: 32.00, end: 33.90, words: [
+          { t: "Wiseman,",     s: 32.02, e: 32.47 },
+          { t: "Glover,",      s: 32.50, e: 33.00 },
+          { t: "Koch,",        s: 33.00, e: 33.24 },
+          { t: "Hansen,",      s: 33.40, e: 33.69 },
+        ]},
+        { start: 33.72, end: 35.60, words: [
+          { t: "the",          s: 33.75, e: 33.91 },
+          { t: "first",        s: 33.91, e: 34.22 },
+          { t: "humans",       s: 34.22, e: 34.68 },
+          { t: "this",         s: 34.68, e: 34.84 },
+          { t: "far",          s: 34.88, e: 34.91 },
+          { t: "from",         s: 35.03, e: 35.23 },
+          { t: "home",         s: 35.23, e: 35.43 },
+        ]},
+        { start: 35.40, end: 36.45, words: [
+          { t: "since",        s: 35.43, e: 35.72 },
+          { t: "Apollo.",      s: 35.75, e: 36.24 },
+        ]},
+        { start: 36.20, end: 37.60, words: [
+          { t: "Gravity",      s: 36.24, e: 36.62 },
+          { t: "brings",       s: 36.63, e: 36.99 },
+          { t: "them",         s: 36.99, e: 37.22 },
+          { t: "back.",        s: 37.22, e: 37.45 },
+        ]},
+        { start: 37.40, end: 38.85, words: [
+          { t: "No",           s: 37.45, e: 37.73 },
+          { t: "burn",         s: 37.73, e: 38.02 },
+          { t: "required.",    s: 38.02, e: 38.64 },
+        ]},
+        { start: 38.60, end: 40.85, words: [
+          { t: "The",          s: 38.64, e: 38.83 },
+          { t: "figure",       s: 38.83, e: 39.21 },
+          { t: "eight",        s: 39.21, e: 39.51 },
+          { t: "completes",    s: 39.65, e: 40.09 },
+          { t: "itself.",      s: 40.09, e: 40.68 },
+        ]},
+        { start: 40.65, end: 42.55, words: [
+          { t: "Re-entry",     s: 40.71, e: 41.10 },
+          { t: "velocity",     s: 41.10, e: 41.58 },
+          { t: "climbs",       s: 41.58, e: 41.92 },
+          { t: "toward",       s: 41.94, e: 42.28 },
+        ]},
+        { start: 42.25, end: 44.15, words: [
+          { t: "11",           s: 42.28, e: 42.41 },
+          { t: "kilometers",   s: 42.98, e: 43.27 },
+          { t: "per",          s: 43.27, e: 43.45 },
+          { t: "second.",      s: 43.45, e: 43.97 },
+        ]},
+        { start: 44.00, end: 45.25, words: [
+          { t: "April",        s: 44.06, e: 44.37 },
+          { t: "11th.",        s: 44.37, e: 45.10 },
+        ]},
+        { start: 45.05, end: 46.95, words: [
+          { t: "Splashdown",   s: 45.10, e: 45.73 },
+          { t: "in",           s: 45.78, e: 45.87 },
+          { t: "the",          s: 45.93, e: 45.96 },
+          { t: "Pacific.",     s: 46.15, e: 46.74 },
+        ]},
+        { start: 46.80, end: 48.40, words: [
+          { t: "Ten",          s: 46.85, e: 47.01 },
+          { t: "days.",        s: 47.01, e: 47.49 },
+          { t: "One",          s: 47.49, e: 47.62 },
+          { t: "flyby.",       s: 47.72, e: 48.24 },
+        ]},
+        { start: 48.40, end: 49.55, words: [
+          { t: "Four",         s: 48.42, e: 48.48 },
+          { t: "astronauts.",  s: 48.56, e: 49.41 },
+        ]},
+        { start: 49.45, end: 50.90, words: [
+          { t: "Infinite",     s: 49.50, e: 49.93 },
+          { t: "ambition.",    s: 50.05, e: 50.72 },
+        ]},
+        { start: 50.70, end: 52.00, words: [
+          { t: "Next:",        s: 50.72, e: 51.07 },
+          { t: "Artemis",      s: 51.07, e: 51.40 },
+          { t: "III.",         s: 51.65, e: 51.83 },
+        ]},
+        { start: 51.80, end: 52.80, words: [
+          { t: "Boots",        s: 51.83, e: 52.16 },
+          { t: "on",           s: 52.19, e: 52.27 },
+          { t: "the",          s: 52.36, e: 52.44 },
+          { t: "Moon.",        s: 52.54, e: 52.80 },
+        ]},
+      ];
+
+      // Build group elements
+      var container = document.getElementById("cap-container");
+      GROUPS.forEach(function (g, gi) {
+        var groupEl = document.createElement("div");
+        groupEl.id = "cg-" + gi;
+        groupEl.className = "cap-group";
+        g.words.forEach(function (w, wi) {
+          var span = document.createElement("span");
+          span.id = "cg-" + gi + "-w-" + wi;
+          span.className = "cap-word";
+          span.textContent = w.t;
+          groupEl.appendChild(span);
+        });
+        container.appendChild(groupEl);
+      });
+
+      var tl = gsap.timeline({ paused: true });
+
+      GROUPS.forEach(function (g, gi) {
+        var el = document.getElementById("cg-" + gi);
+        // Group enter
+        tl.set(el, { visibility: "visible" }, g.start - 0.06);
+        tl.fromTo(el,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.18, ease: "power3.out" },
+          g.start - 0.04);
+
+        // Per-word highlight
+        g.words.forEach(function (w, wi) {
+          var wEl = document.getElementById("cg-" + gi + "-w-" + wi);
+          tl.set(wEl, { className: "cap-word active", opacity: 1 }, w.s);
+          tl.to(wEl,
+            { opacity: 0.55, duration: 0.14, ease: "power2.in" },
+            Math.max(w.s, w.e - 0.05));
+          tl.set(wEl, { className: "cap-word" }, w.e + 0.02);
+        });
+
+        // Group exit with hard kill
+        var killStart = g.end - 0.14;
+        tl.to(el,
+          { opacity: 0, y: -6, duration: 0.14, ease: "power2.in" },
+          killStart);
+        tl.set(el, { opacity: 0, visibility: "hidden", y: 0 }, g.end);
+      });
+
+      // Ensure composition covers full 52.8s
+      tl.set({}, {}, 52.8);
+
+      window.__timelines["captions"] = tl;
+    </script>
+  </body>
+</html>

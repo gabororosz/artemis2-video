@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="scene-2-root"
+      data-composition-id="scene-2"
+      data-start="0"
+      data-duration="60"
+      data-width="1920"
+      data-height="1080"
+      style="width:1920px;height:1080px;position:relative;overflow:hidden;background:transparent;font-family:'Space Grotesk',sans-serif;color:#E8EEF7;"
+    >
+      <div id="s2-content" style="position:absolute;inset:0;opacity:0;background:#05070D;">
+        <div id="s2-stars-far" style="position:absolute;inset:0;background:
+          radial-gradient(circle at 18% 28%, #E8EEF7 0.7px, rgba(232,238,247,0) 1.1px),
+          radial-gradient(circle at 82% 18%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 38% 72%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 92% 62%, #E8EEF7 0.5px, rgba(232,238,247,0) 0.9px);
+          background-size:480px 420px,360px 380px,560px 520px,420px 460px;opacity:0.5;"></div>
+
+        <div style="position:absolute;left:0;bottom:0;width:720px;height:520px;background:
+          radial-gradient(ellipse 60% 80% at 25% 100%, rgba(255,107,53,0.22) 0%, rgba(255,107,53,0) 70%);
+          pointer-events:none;"></div>
+
+        <div style="position:absolute;left:80px;top:80px;
+                    font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:0.35em;color:#4FC3F7;">
+          PHASE 01
+        </div>
+        <div id="s2-heading"
+             style="position:absolute;left:80px;top:110px;
+                    font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;
+                    letter-spacing:-0.005em;color:#E8EEF7;opacity:0;">
+          Launch &amp; High Earth Orbit
+        </div>
+        <div id="s2-rule"
+             style="position:absolute;left:80px;top:180px;width:0;height:2px;background:#FF6B35;"></div>
+
+        <svg viewBox="0 0 400 900" width="340" height="760"
+             style="position:absolute;left:320px;top:200px;">
+          <rect x="58" y="120" width="4" height="600" fill="#E8EEF7" opacity="0.18"/>
+          <rect x="54" y="140" width="12" height="3" fill="#E8EEF7" opacity="0.18"/>
+          <rect x="54" y="200" width="12" height="3" fill="#E8EEF7" opacity="0.18"/>
+          <rect x="54" y="260" width="12" height="3" fill="#E8EEF7" opacity="0.18"/>
+          <rect x="54" y="320" width="12" height="3" fill="#E8EEF7" opacity="0.18"/>
+          <rect x="54" y="380" width="12" height="3" fill="#E8EEF7" opacity="0.18"/>
+          <rect x="54" y="440" width="12" height="3" fill="#E8EEF7" opacity="0.18"/>
+          <g id="s2-rocket-body">
+            <path d="M 200 20 L 218 130 L 182 130 Z" fill="#E8EEF7"/>
+            <path d="M 218 130 L 228 200 L 172 200 L 182 130 Z" fill="#E8EEF7"/>
+            <rect x="178" y="200" width="44" height="180" fill="#E8EEF7"/>
+            <rect x="176" y="380" width="48" height="12" fill="#4FC3F7" opacity="0.8"/>
+            <rect x="170" y="392" width="60" height="360" fill="#E8EEF7"/>
+            <text x="200" y="520" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#FF6B35" opacity="0.9">NASA</text>
+            <rect x="132" y="420" width="32" height="300" fill="#E8EEF7" opacity="0.9"/>
+            <rect x="236" y="420" width="32" height="300" fill="#E8EEF7" opacity="0.9"/>
+            <path d="M 170 752 L 150 780 L 170 780 Z" fill="#E8EEF7"/>
+            <path d="M 230 752 L 250 780 L 230 780 Z" fill="#E8EEF7"/>
+          </g>
+          <g id="s2-plume" opacity="0">
+            <ellipse cx="148" cy="800" rx="22" ry="60" fill="#FF6B35" opacity="0.85"/>
+            <ellipse cx="200" cy="820" rx="30" ry="80" fill="#FFD166" opacity="0.9"/>
+            <ellipse cx="252" cy="800" rx="22" ry="60" fill="#FF6B35" opacity="0.85"/>
+            <ellipse cx="200" cy="860" rx="80" ry="34" fill="#FF6B35" opacity="0.5"/>
+            <ellipse cx="200" cy="870" rx="140" ry="22" fill="#FFD166" opacity="0.35"/>
+          </g>
+        </svg>
+
+        <div style="position:absolute;right:80px;top:240px;width:720px;
+                    border:1px solid rgba(79,195,247,0.25);background:rgba(11,20,38,0.55);
+                    padding:36px 44px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.3em;color:#4FC3F7;opacity:0.75;">
+            LIVE TELEMETRY
+          </div>
+          <div style="margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:30px 40px;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:#E8EEF7;opacity:0.55;">T+ MET</div>
+              <div id="s2-met" style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:44px;letter-spacing:0.02em;color:#E8EEF7;font-variant-numeric:tabular-nums;">T+00:00:00</div>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:#E8EEF7;opacity:0.55;">ALTITUDE</div>
+              <div id="s2-alt" style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:44px;color:#FFD166;font-variant-numeric:tabular-nums;">0<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> KM</span></div>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:#E8EEF7;opacity:0.55;">VELOCITY</div>
+              <div id="s2-vel" style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:44px;color:#4FC3F7;font-variant-numeric:tabular-nums;">0.00<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> KM/S</span></div>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.25em;color:#E8EEF7;opacity:0.55;">THRUST</div>
+              <div id="s2-thrust" style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:44px;color:#FF6B35;font-variant-numeric:tabular-nums;">  0<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> %</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="s2-annot"
+             style="position:absolute;right:80px;bottom:110px;width:720px;
+                    font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:0.12em;color:#E8EEF7;opacity:0;">
+          <span style="color:#FFD166;">›</span>&nbsp;&nbsp;~24-HOUR ELLIPTICAL ORBIT FOR SYSTEM CHECKOUTS
+        </div>
+
+        <div style="position:absolute;left:80px;bottom:80px;
+                    font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.3em;color:#4FC3F7;opacity:0.55;">
+          SLS BLOCK 1 · ICPS · ORION
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var S = 7.4; // Scene 2 outer start
+
+      // Scene container fade-in
+      tl.to("#s2-content", { opacity: 1, duration: 0.6, ease: "power2.out" }, S);
+
+      tl.fromTo("#s2-heading",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "expo.out" }, S + 0.5);
+      tl.to("#s2-rule", { width: 120, duration: 0.8, ease: "expo.out" }, S + 0.9);
+
+      tl.to("#s2-plume", { opacity: 1, duration: 0.5, ease: "power4.in" }, S + 0.9);
+      tl.to("#s2-plume", { scaleY: 1.3, transformOrigin: "50% 0%", duration: 6.5, ease: "power2.out" }, S + 0.9);
+      tl.fromTo("#s2-rocket-body",
+        { y: 0 },
+        { y: -160, duration: 6.8, ease: "power2.in" }, S + 1.2);
+
+      var alt = { v: 0 };
+      tl.to(alt, {
+        v: 142,
+        duration: 6.8,
+        ease: "power2.in",
+        onUpdate: function () {
+          var el = document.getElementById("s2-alt");
+          if (el) el.innerHTML = Math.round(alt.v).toString().padStart(3, " ").replace(/ /g, "&nbsp;") +
+            '<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> KM</span>';
+        }
+      }, S + 1.2);
+
+      var vel = { v: 0.00 };
+      tl.to(vel, {
+        v: 7.82,
+        duration: 6.8,
+        ease: "power2.in",
+        onUpdate: function () {
+          var el = document.getElementById("s2-vel");
+          if (el) el.innerHTML = vel.v.toFixed(2) +
+            '<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> KM/S</span>';
+        }
+      }, S + 1.2);
+
+      var thrust = { v: 0 };
+      tl.to(thrust, {
+        v: 104,
+        duration: 1.2,
+        ease: "power3.out",
+        onUpdate: function () {
+          var el = document.getElementById("s2-thrust");
+          if (el) el.innerHTML = Math.round(thrust.v).toString().padStart(3, " ").replace(/ /g, "&nbsp;") +
+            '<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> %</span>';
+        }
+      }, S + 1.0);
+      tl.to(thrust, { v: 100, duration: 5.4, ease: "none",
+        onUpdate: function () {
+          var el = document.getElementById("s2-thrust");
+          if (el) el.innerHTML = Math.round(thrust.v).toString().padStart(3, " ").replace(/ /g, "&nbsp;") +
+            '<span style="font-size:22px;color:#E8EEF7;opacity:0.65;"> %</span>';
+        }
+      }, S + 2.2);
+
+      var met = { v: 0 };
+      tl.to(met, {
+        v: 408,
+        duration: 6.8,
+        ease: "none",
+        onUpdate: function () {
+          var el = document.getElementById("s2-met");
+          if (!el) return;
+          var s = Math.floor(met.v);
+          var h = Math.floor(s / 3600);
+          var m = Math.floor((s % 3600) / 60);
+          var sec = s % 60;
+          el.textContent = "T+" +
+            h.toString().padStart(2, "0") + ":" +
+            m.toString().padStart(2, "0") + ":" +
+            sec.toString().padStart(2, "0");
+        }
+      }, S + 1.2);
+
+      tl.fromTo("#s2-annot",
+        { opacity: 0, y: 8 },
+        { opacity: 0.9, y: 0, duration: 0.8, ease: "power3.out" }, S + 5.0);
+
+      tl.fromTo("#s2-stars-far", { x: 0 }, { x: -22, duration: 8.6, ease: "none" }, S);
+
+      tl.set({}, {}, 60);
+
+      window.__timelines["scene-2"] = tl;
+    </script>
+  </body>
+</html>

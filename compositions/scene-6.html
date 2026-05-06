@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="scene-6-root"
+      data-composition-id="scene-6"
+      data-start="0"
+      data-duration="60"
+      data-width="1920"
+      data-height="1080"
+      style="width:1920px;height:1080px;position:relative;overflow:hidden;background:transparent;font-family:'Space Grotesk',sans-serif;color:#E8EEF7;"
+    >
+      <div id="s6-content" style="position:absolute;inset:0;opacity:0;background:#05070D;">
+        <div id="s6-stars" style="position:absolute;inset:0;background:
+          radial-gradient(circle at 18% 28%, #E8EEF7 0.7px, rgba(232,238,247,0) 1.1px),
+          radial-gradient(circle at 82% 18%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 46% 78%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 88% 68%, #E8EEF7 0.5px, rgba(232,238,247,0) 0.9px);
+          background-size:520px 460px,380px 400px,600px 540px,440px 480px;opacity:0.5;"></div>
+
+        <div style="position:absolute;left:80px;top:80px;
+                    font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:0.35em;color:#4FC3F7;">
+          PHASE 05
+        </div>
+        <div id="s6-heading"
+             style="position:absolute;left:80px;top:110px;
+                    font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;color:#E8EEF7;opacity:0;">
+          Free-Return · Gravity Brings Them Home
+        </div>
+        <div id="s6-rule"
+             style="position:absolute;left:80px;top:180px;width:0;height:2px;background:#FF6B35;"></div>
+
+        <svg viewBox="0 0 1920 720" width="1920" height="720"
+             style="position:absolute;left:0;top:220px;" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.06" stroke="#4FC3F7" stroke-width="1">
+            <line x1="0" y1="360" x2="1920" y2="360"/>
+            <line x1="400" y1="0" x2="400" y2="720"/>
+            <line x1="1520" y1="0" x2="1520" y2="720"/>
+          </g>
+
+          <g transform="translate(1520 360)">
+            <circle r="58" fill="#0B1426" stroke="#FFD166" stroke-width="1.5" opacity="0.85"/>
+            <circle cx="-14" cy="-12" r="6" fill="none" stroke="#FFD166" stroke-width="1" opacity="0.4"/>
+            <circle cx="18" cy="8" r="4" fill="none" stroke="#FFD166" stroke-width="1" opacity="0.4"/>
+            <text y="-82" text-anchor="middle" font-family="JetBrains Mono" font-size="14" letter-spacing="4" fill="#E8EEF7" opacity="0.55">MOON</text>
+          </g>
+
+          <g transform="translate(400 360)">
+            <circle r="110" fill="#0B1426" stroke="#4FC3F7" stroke-width="2" opacity="0.9"/>
+            <path d="M -66 -18 Q -36 -36 -8 -16 T 42 -28 T 74 -6" fill="none" stroke="#4FC3F7" stroke-width="1.5" opacity="0.55"/>
+            <path d="M -46 28 Q -18 18 12 30 T 56 24 T 82 42" fill="none" stroke="#4FC3F7" stroke-width="1.5" opacity="0.55"/>
+            <circle r="138" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.3" stroke-dasharray="4 6"/>
+            <text y="-152" text-anchor="middle" font-family="JetBrains Mono" font-size="14" letter-spacing="4" fill="#E8EEF7" opacity="0.7">EARTH</text>
+          </g>
+
+          <path d="M 518 360 C 780 80, 1180 60, 1490 340"
+                fill="none" stroke="#4FC3F7" stroke-width="2"
+                opacity="0.3" stroke-dasharray="6 6"/>
+
+          <path id="s6-return"
+                d="M 1490 380 C 1180 660, 780 680, 518 360"
+                fill="none" stroke="#4FC3F7" stroke-width="3"
+                stroke-dasharray="1200" stroke-dashoffset="1200"
+                stroke-linecap="round"/>
+
+          <g id="s6-orion" transform="translate(1490 380)" opacity="0">
+            <circle r="7" fill="#E8EEF7"/>
+            <circle r="14" fill="none" stroke="#E8EEF7" stroke-width="1" opacity="0.5"/>
+            <path d="M 0 0 L 30 -10 L 46 -4 L 30 4" fill="none" stroke="#FF6B35" stroke-width="1.5" opacity="0.6"/>
+          </g>
+
+          <g opacity="0.12">
+            <path d="M 400 250 C 200 200, 200 360, 400 360"
+                  fill="none" stroke="#4FC3F7" stroke-width="1.5" stroke-dasharray="4 6"/>
+            <path d="M 400 470 C 200 520, 200 360, 400 360"
+                  fill="none" stroke="#4FC3F7" stroke-width="1.5" stroke-dasharray="4 6"/>
+          </g>
+        </svg>
+
+        <div style="position:absolute;right:80px;top:250px;width:620px;text-align:right;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.3em;color:#FF6B35;">
+            RE-ENTRY VELOCITY
+          </div>
+          <div id="s6-vel" style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:140px;line-height:1;letter-spacing:-0.01em;color:#E8EEF7;font-variant-numeric:tabular-nums;">
+            <span id="s6-vel-v">0.00</span>
+            <span style="font-size:42px;color:#E8EEF7;opacity:0.65;"> KM/S</span>
+          </div>
+          <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:0.2em;color:#E8EEF7;opacity:0.6;">
+            TARGET · 11.00 KM/S AT EI-5
+          </div>
+        </div>
+
+        <div style="position:absolute;left:80px;bottom:110px;width:900px;
+                    font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:0.2em;color:#E8EEF7;opacity:0.75;">
+          <span style="color:#FFD166;">◆</span>&nbsp;&nbsp;NO PROPULSIVE BURN REQUIRED · LUNAR GRAVITY ASSIST COMPLETES FIGURE-8
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var S = 40.4;
+
+      tl.to("#s6-content", { opacity: 1, duration: 0.6, ease: "power2.out" }, S);
+
+      tl.fromTo("#s6-heading",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "expo.out" }, S + 0.4);
+      tl.to("#s6-rule", { width: 220, duration: 0.8, ease: "expo.out" }, S + 0.8);
+
+      tl.to("#s6-return",
+        { attr: { "stroke-dashoffset": 0 }, duration: 5.2, ease: "power2.inOut" }, S + 1.0);
+
+      var orion = { t: 0 };
+      function pointOnCurve(t) {
+        var u = 1 - t;
+        var x = u*u*u*1490 + 3*u*u*t*1180 + 3*u*t*t*780 + t*t*t*518;
+        var y = u*u*u*380 + 3*u*u*t*660 + 3*u*t*t*680 + t*t*t*360;
+        return { x: x, y: y };
+      }
+      tl.set("#s6-orion", { opacity: 1 }, S + 1.0);
+      tl.to(orion, {
+        t: 1,
+        duration: 5.2,
+        ease: "power2.inOut",
+        onUpdate: function () {
+          var p = pointOnCurve(orion.t);
+          var el = document.getElementById("s6-orion");
+          if (el) el.setAttribute("transform", "translate(" + p.x + " " + p.y + ")");
+        }
+      }, S + 1.0);
+
+      var vel = { v: 1.02 };
+      tl.to(vel, {
+        v: 11.01,
+        duration: 6.2,
+        ease: "power3.in",
+        onUpdate: function () {
+          var el = document.getElementById("s6-vel-v");
+          if (el) el.textContent = vel.v.toFixed(2);
+        }
+      }, S + 1.4);
+
+      tl.fromTo("#s6-stars", { x: 0 }, { x: -26, duration: 8.6, ease: "none" }, S);
+
+      tl.set({}, {}, 60);
+
+      window.__timelines["scene-6"] = tl;
+    </script>
+  </body>
+</html>

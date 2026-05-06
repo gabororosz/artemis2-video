@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="scene-1-root"
+      data-composition-id="scene-1"
+      data-start="0"
+      data-duration="60"
+      data-width="1920"
+      data-height="1080"
+      style="width:1920px;height:1080px;position:relative;overflow:hidden;background:transparent;font-family:'Space Grotesk',sans-serif;color:#E8EEF7;"
+    >
+      <div id="s1-content" style="position:absolute;inset:0;opacity:0;background:#05070D;">
+        <!-- Starfield layers -->
+        <div id="s1-stars-far" style="position:absolute;inset:0;background:
+          radial-gradient(circle at 12% 22%, #E8EEF7 0.8px, rgba(232,238,247,0) 1.2px),
+          radial-gradient(circle at 78% 14%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 32% 68%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 92% 80%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 54% 42%, #E8EEF7 0.5px, rgba(232,238,247,0) 0.9px);
+          background-size:420px 380px,360px 340px,520px 500px,300px 320px,620px 580px;opacity:0.55;"></div>
+        <div id="s1-stars-mid" style="position:absolute;inset:0;background:
+          radial-gradient(circle at 22% 72%, #E8EEF7 1.2px, rgba(232,238,247,0) 1.8px),
+          radial-gradient(circle at 86% 34%, #E8EEF7 1.2px, rgba(232,238,247,0) 1.8px),
+          radial-gradient(circle at 64% 86%, #E8EEF7 1.0px, rgba(232,238,247,0) 1.6px);
+          background-size:540px 520px,780px 640px,460px 440px;opacity:0.75;"></div>
+
+        <!-- Vignette -->
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(ellipse 60% 50% at 50% 50%, rgba(5,7,13,0) 0%, rgba(5,7,13,0.45) 70%, #05070D 100%);
+          pointer-events:none;"></div>
+
+        <!-- Mission patch silhouette -->
+        <svg id="s1-patch" viewBox="0 0 400 400" width="560" height="560"
+             style="position:absolute;left:680px;top:260px;opacity:0;">
+          <defs>
+            <clipPath id="s1-hex">
+              <polygon points="200,20 360,110 360,290 200,380 40,290 40,110" />
+            </clipPath>
+          </defs>
+          <polygon points="200,20 360,110 360,290 200,380 40,290 40,110"
+                   fill="none" stroke="#4FC3F7" stroke-width="2" opacity="0.55"/>
+          <polygon points="200,40 342,118 342,282 200,360 58,282 58,118"
+                   fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.25"/>
+          <g clip-path="url(#s1-hex)">
+            <circle cx="200" cy="200" r="92" fill="none" stroke="#FFD166" stroke-width="2" opacity="0.6"/>
+            <circle cx="200" cy="200" r="60" fill="none" stroke="#FFD166" stroke-width="1" opacity="0.4"/>
+            <path d="M 108 220 Q 200 100 292 220" fill="none" stroke="#FF6B35" stroke-width="3" opacity="0.7"/>
+            <circle cx="292" cy="220" r="6" fill="#FF6B35"/>
+          </g>
+          <text x="200" y="402" text-anchor="middle"
+                font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="6"
+                fill="#4FC3F7" opacity="0.6">ARTEMIS II</text>
+        </svg>
+
+        <div id="s1-title"
+             style="position:absolute;left:0;right:0;top:420px;text-align:center;
+                    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:180px;
+                    letter-spacing:-0.01em;color:#E8EEF7;line-height:1;opacity:0;">
+          ARTEMIS II
+        </div>
+
+        <div id="s1-rule"
+             style="position:absolute;left:50%;top:640px;width:0;height:2px;background:#FF6B35;
+                    transform:translateX(-50%);opacity:0;"></div>
+
+        <div id="s1-sub"
+             style="position:absolute;left:0;right:0;top:670px;text-align:center;
+                    font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:36px;
+                    letter-spacing:0.04em;color:#E8EEF7;opacity:0;">
+          First Crewed Lunar Flyby in Over 50 Years
+        </div>
+
+        <div id="s1-stamp"
+             style="position:absolute;left:80px;bottom:80px;
+                    font-family:'JetBrains Mono',monospace;font-weight:400;font-size:20px;
+                    letter-spacing:0.25em;color:#4FC3F7;opacity:0;">
+          <span style="color:#FF6B35;">●</span>&nbsp;&nbsp;APR 01 2026 · 22:35 UTC · KSC LC-39B
+        </div>
+
+        <div style="position:absolute;right:80px;top:80px;
+                    font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.3em;
+                    color:#4FC3F7;opacity:0.55;">CSM-002 · EM-2 · NASA</div>
+        <div style="position:absolute;right:80px;top:106px;
+                    font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.3em;
+                    color:#E8EEF7;opacity:0.35;">MISSION PROFILE</div>
+
+        <svg style="position:absolute;left:940px;top:520px;opacity:0.15;" width="40" height="40" viewBox="0 0 40 40">
+          <line x1="20" y1="0" x2="20" y2="14" stroke="#4FC3F7" stroke-width="1"/>
+          <line x1="20" y1="26" x2="20" y2="40" stroke="#4FC3F7" stroke-width="1"/>
+          <line x1="0" y1="20" x2="14" y2="20" stroke="#4FC3F7" stroke-width="1"/>
+          <line x1="26" y1="20" x2="40" y2="20" stroke="#4FC3F7" stroke-width="1"/>
+          <circle cx="20" cy="20" r="1.5" fill="#4FC3F7"/>
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var S = 0; // Scene 1 outer start
+
+      // Scene container fade-in at scene start
+      tl.to("#s1-content", { opacity: 1, duration: 0.6, ease: "power2.out" }, S);
+
+      tl.fromTo("#s1-patch",
+        { opacity: 0, scale: 0.96 },
+        { opacity: 0.22, scale: 1, duration: 1.8, ease: "expo.out" }, S + 0.4);
+
+      tl.fromTo("#s1-title",
+        { opacity: 0, y: 24, letterSpacing: "0.08em" },
+        { opacity: 1, y: 0, letterSpacing: "-0.01em", duration: 1.4, ease: "expo.out" }, S + 0.6);
+
+      tl.to("#s1-rule", { width: 420, opacity: 1, duration: 1.0, ease: "expo.out" }, S + 1.4);
+
+      tl.fromTo("#s1-sub",
+        { opacity: 0, y: 16 },
+        { opacity: 0.88, y: 0, duration: 1.0, ease: "power3.out" }, S + 1.6);
+
+      tl.fromTo("#s1-stamp",
+        { opacity: 0, x: -12 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }, S + 2.2);
+
+      // Parallax drift during scene
+      tl.fromTo("#s1-stars-far", { x: 0 }, { x: -14, duration: 8, ease: "none" }, S);
+      tl.fromTo("#s1-stars-mid", { x: 0 }, { x: -34, duration: 8, ease: "none" }, S);
+
+      // After scene ends (t=8), keep content visible but later scenes on higher track will cover it.
+      // No explicit exit animation — the next scene's fade-in IS the exit.
+      tl.set({}, {}, 60);
+
+      window.__timelines["scene-1"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #05070D;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="60"
+      data-width="1920"
+      data-height="1080"
+      style="width:1920px;height:1080px;position:relative;overflow:hidden;background:#05070D;"
+    >
+      <!-- =========================================================
+           SCENE STACK — each sub-composition's internal timeline
+           runs synced with this outer timeline. Scenes internally
+           gate their own visibility (opacity wrapper) and use
+           ABSOLUTE outer-time tween positions.
+           Track indices are layered so later scenes draw on top of
+           earlier ones; bg color covers outgoing scenes.
+           ========================================================= -->
+
+      <div data-composition-id="scene-1" data-composition-src="compositions/scene-1.html"
+           data-start="0" data-duration="60" data-track-index="1"
+           style="position:absolute;inset:0;"></div>
+      <div data-composition-id="scene-2" data-composition-src="compositions/scene-2.html"
+           data-start="0" data-duration="60" data-track-index="2"
+           style="position:absolute;inset:0;"></div>
+      <div data-composition-id="scene-3" data-composition-src="compositions/scene-3.html"
+           data-start="0" data-duration="60" data-track-index="3"
+           style="position:absolute;inset:0;"></div>
+      <div data-composition-id="scene-4" data-composition-src="compositions/scene-4.html"
+           data-start="0" data-duration="60" data-track-index="4"
+           style="position:absolute;inset:0;"></div>
+      <div data-composition-id="scene-5" data-composition-src="compositions/scene-5.html"
+           data-start="0" data-duration="60" data-track-index="5"
+           style="position:absolute;inset:0;"></div>
+      <div data-composition-id="scene-6" data-composition-src="compositions/scene-6.html"
+           data-start="0" data-duration="60" data-track-index="6"
+           style="position:absolute;inset:0;"></div>
+      <div data-composition-id="scene-7" data-composition-src="compositions/scene-7.html"
+           data-start="0" data-duration="60" data-track-index="7"
+           style="position:absolute;inset:0;"></div>
+
+      <!-- =========================================================
+           SHADER-ESQUE BOUNDARY FLASHES — 0.20s bone-white pulse at
+           each scene overlap midpoint. Above scenes, below chrome.
+           ========================================================= -->
+      <div id="flash-1" class="clip" data-start="7.60" data-duration="0.40" data-track-index="20"
+           style="position:absolute;inset:0;background:#E8EEF7;mix-blend-mode:screen;opacity:0;pointer-events:none;"></div>
+      <div id="flash-2" class="clip" data-start="15.60" data-duration="0.40" data-track-index="21"
+           style="position:absolute;inset:0;background:#E8EEF7;mix-blend-mode:screen;opacity:0;pointer-events:none;"></div>
+      <div id="flash-3" class="clip" data-start="23.60" data-duration="0.40" data-track-index="22"
+           style="position:absolute;inset:0;background:#E8EEF7;mix-blend-mode:screen;opacity:0;pointer-events:none;"></div>
+      <div id="flash-4" class="clip" data-start="30.60" data-duration="0.40" data-track-index="23"
+           style="position:absolute;inset:0;background:#E8EEF7;mix-blend-mode:screen;opacity:0;pointer-events:none;"></div>
+      <div id="flash-5" class="clip" data-start="40.60" data-duration="0.40" data-track-index="24"
+           style="position:absolute;inset:0;background:#E8EEF7;mix-blend-mode:screen;opacity:0;pointer-events:none;"></div>
+      <div id="flash-6" class="clip" data-start="48.60" data-duration="0.40" data-track-index="25"
+           style="position:absolute;inset:0;background:#E8EEF7;mix-blend-mode:screen;opacity:0;pointer-events:none;"></div>
+
+      <!-- =========================================================
+           MISSION CONTROL CHROME (persistent)
+           ========================================================= -->
+      <div class="clip" data-start="0" data-duration="60" data-track-index="30"
+           style="position:absolute;left:40px;top:40px;pointer-events:none;">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <path d="M 0 14 L 0 0 L 14 0" stroke="#4FC3F7" stroke-width="1.5" fill="none" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="clip" data-start="0" data-duration="60" data-track-index="31"
+           style="position:absolute;right:40px;top:40px;pointer-events:none;">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <path d="M 14 0 L 28 0 L 28 14" stroke="#4FC3F7" stroke-width="1.5" fill="none" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="clip" data-start="0" data-duration="60" data-track-index="32"
+           style="position:absolute;left:40px;bottom:40px;pointer-events:none;">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <path d="M 0 14 L 0 28 L 14 28" stroke="#4FC3F7" stroke-width="1.5" fill="none" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="clip" data-start="0" data-duration="60" data-track-index="33"
+           style="position:absolute;right:40px;bottom:40px;pointer-events:none;">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <path d="M 14 28 L 28 28 L 28 14" stroke="#4FC3F7" stroke-width="1.5" fill="none" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="clip" data-start="0" data-duration="60" data-track-index="34"
+           style="position:absolute;left:0;right:0;top:44px;text-align:center;
+                  font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.5em;
+                  color:#4FC3F7;opacity:0.45;pointer-events:none;">
+        ARTEMIS II · MISSION TIMELINE · APR 01 — 11 2026
+      </div>
+
+      <!-- =========================================================
+           CAPTIONS — narration starts at outer t=0
+           ========================================================= -->
+      <div data-composition-id="captions" data-composition-src="compositions/captions.html"
+           data-start="0" data-duration="60" data-track-index="40"
+           style="position:absolute;inset:0;"></div>
+
+      <!-- =========================================================
+           NARRATION AUDIO
+           ========================================================= -->
+      <audio
+        id="narration"
+        data-start="0"
+        data-duration="52.8"
+        data-track-index="50"
+        data-volume="1"
+        src="narration.wav"
+      ></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      var flashes = [
+        { id: "#flash-1", at: 7.70 },
+        { id: "#flash-2", at: 15.70 },
+        { id: "#flash-3", at: 23.70 },
+        { id: "#flash-4", at: 30.70 },
+        { id: "#flash-5", at: 40.70 },
+        { id: "#flash-6", at: 48.70 },
+      ];
+      flashes.forEach(function (f) {
+        tl.fromTo(f.id,
+          { opacity: 0 },
+          { opacity: 0.18, duration: 0.08, ease: "power4.in" },
+          f.at - 0.08);
+        tl.to(f.id,
+          { opacity: 0, duration: 0.20, ease: "power2.out" },
+          f.at);
+      });
+
+      tl.set({}, {}, 60);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

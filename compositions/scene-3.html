@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="scene-3-root"
+      data-composition-id="scene-3"
+      data-start="0"
+      data-duration="60"
+      data-width="1920"
+      data-height="1080"
+      style="width:1920px;height:1080px;position:relative;overflow:hidden;background:transparent;font-family:'Space Grotesk',sans-serif;color:#E8EEF7;"
+    >
+      <div id="s3-content" style="position:absolute;inset:0;opacity:0;background:#05070D;">
+        <div id="s3-stars" style="position:absolute;inset:0;background:
+          radial-gradient(circle at 18% 32%, #E8EEF7 0.7px, rgba(232,238,247,0) 1.1px),
+          radial-gradient(circle at 82% 22%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 46% 78%, #E8EEF7 0.6px, rgba(232,238,247,0) 1.0px),
+          radial-gradient(circle at 88% 68%, #E8EEF7 0.5px, rgba(232,238,247,0) 0.9px);
+          background-size:520px 460px,380px 400px,600px 540px,440px 480px;opacity:0.5;"></div>
+
+        <div style="position:absolute;left:80px;top:80px;
+                    font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:0.35em;color:#4FC3F7;">
+          PHASE 02
+        </div>
+        <div id="s3-heading"
+             style="position:absolute;left:80px;top:110px;
+                    font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;color:#E8EEF7;opacity:0;">
+          Trans-Lunar Injection Burn · 6 MIN
+        </div>
+        <div id="s3-rule"
+             style="position:absolute;left:80px;top:180px;width:0;height:2px;background:#FF6B35;"></div>
+
+        <svg viewBox="0 0 1920 760" width="1920" height="760"
+             style="position:absolute;left:0;top:220px;" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.08" stroke="#4FC3F7" stroke-width="1">
+            <line x1="0" y1="380" x2="1920" y2="380"/>
+            <line x1="320" y1="0" x2="320" y2="760"/>
+            <line x1="1600" y1="0" x2="1600" y2="760"/>
+          </g>
+
+          <g transform="translate(320 380)">
+            <circle r="118" fill="#0B1426" stroke="#4FC3F7" stroke-width="2" opacity="0.9"/>
+            <circle r="118" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.35" stroke-dasharray="2 8"/>
+            <path d="M -70 -20 Q -40 -40 -10 -18 T 40 -30 T 80 -6" fill="none" stroke="#4FC3F7" stroke-width="1.5" opacity="0.55"/>
+            <path d="M -50 30 Q -20 18 10 34 T 58 28 T 88 46" fill="none" stroke="#4FC3F7" stroke-width="1.5" opacity="0.55"/>
+            <path d="M -30 -60 Q 0 -66 20 -54" fill="none" stroke="#4FC3F7" stroke-width="1.5" opacity="0.4"/>
+            <circle r="148" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.35" stroke-dasharray="4 6"/>
+            <text y="-160" text-anchor="middle" font-family="JetBrains Mono" font-size="14" letter-spacing="4" fill="#E8EEF7" opacity="0.7">EARTH</text>
+          </g>
+
+          <g transform="translate(1600 380)">
+            <circle r="58" fill="#0B1426" stroke="#FFD166" stroke-width="1.5" opacity="0.85"/>
+            <circle cx="-14" cy="-12" r="6" fill="none" stroke="#FFD166" stroke-width="1" opacity="0.5"/>
+            <circle cx="18" cy="8" r="4" fill="none" stroke="#FFD166" stroke-width="1" opacity="0.5"/>
+            <circle cx="-6" cy="20" r="3" fill="none" stroke="#FFD166" stroke-width="1" opacity="0.4"/>
+            <text y="-82" text-anchor="middle" font-family="JetBrains Mono" font-size="14" letter-spacing="4" fill="#E8EEF7" opacity="0.7">MOON</text>
+          </g>
+
+          <path id="s3-traj"
+                d="M 440 380 C 700 80, 1100 60, 1540 360"
+                fill="none" stroke="#4FC3F7" stroke-width="3"
+                stroke-dasharray="1400" stroke-dashoffset="1400"
+                stroke-linecap="round"/>
+          <path d="M 440 380 C 700 80, 1100 60, 1540 360"
+                fill="none" stroke="#4FC3F7" stroke-width="14" opacity="0.06"/>
+
+          <g id="s3-burn" transform="translate(440 380)" opacity="0">
+            <circle r="22" fill="#FF6B35" opacity="0.45"/>
+            <circle r="12" fill="#FFD166" opacity="0.85"/>
+            <circle r="5" fill="#E8EEF7"/>
+            <g>
+              <path d="M -28 0 L -42 -6 L -42 6 Z" fill="#FF6B35" opacity="0.7"/>
+              <path d="M 28 0 L 42 -6 L 42 6 Z" fill="#FF6B35" opacity="0.7"/>
+            </g>
+          </g>
+
+          <g id="s3-orion" transform="translate(440 380)" opacity="0">
+            <circle r="7" fill="#E8EEF7"/>
+            <circle r="14" fill="none" stroke="#E8EEF7" stroke-width="1" opacity="0.5"/>
+          </g>
+        </svg>
+
+        <div id="s3-card"
+             style="position:absolute;left:80px;bottom:90px;width:560px;
+                    border:1px solid rgba(255,107,53,0.45);background:rgba(11,20,38,0.6);
+                    padding:28px 36px;opacity:0;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.3em;color:#FF6B35;">
+            BURN STATISTIC
+          </div>
+          <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:66px;color:#E8EEF7;font-variant-numeric:tabular-nums;letter-spacing:-0.01em;">
+            Δv <span style="color:#FF6B35;">+3.05</span> KM/S
+          </div>
+          <div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#E8EEF7;opacity:0.65;">
+            RL10 · ICPS · FREE-RETURN TRAJECTORY
+          </div>
+        </div>
+
+        <div id="s3-label"
+             style="position:absolute;left:340px;top:430px;
+                    font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.25em;color:#FF6B35;opacity:0;">
+          ⟶ TLI IGNITION
+        </div>
+
+        <div style="position:absolute;right:80px;bottom:90px;width:500px;text-align:right;
+                    font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#E8EEF7;opacity:0.5;">
+          TARGET PERIGEE: 5,800 KM<br/>APOGEE: LUNAR SPHERE OF INFLUENCE
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var S = 15.4;
+
+      tl.to("#s3-content", { opacity: 1, duration: 0.6, ease: "power2.out" }, S);
+
+      tl.fromTo("#s3-heading",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "expo.out" }, S + 0.4);
+      tl.to("#s3-rule", { width: 200, duration: 0.8, ease: "expo.out" }, S + 0.8);
+
+      tl.fromTo("#s3-burn",
+        { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power4.out" }, S + 1.2);
+      tl.fromTo("#s3-label",
+        { opacity: 0, x: -8 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, S + 1.4);
+
+      tl.to("#s3-traj",
+        { attr: { "stroke-dashoffset": 0 }, duration: 4.2, ease: "power2.inOut" }, S + 1.6);
+
+      var orion = { t: 0 };
+      function pointOnCurve(t) {
+        var u = 1 - t;
+        var x = u*u*u*440 + 3*u*u*t*700 + 3*u*t*t*1100 + t*t*t*1540;
+        var y = u*u*u*380 + 3*u*u*t*80 + 3*u*t*t*60 + t*t*t*360;
+        return { x: x, y: y };
+      }
+      tl.set("#s3-orion", { opacity: 1 }, S + 1.6);
+      tl.to(orion, {
+        t: 1,
+        duration: 4.2,
+        ease: "power2.inOut",
+        onUpdate: function () {
+          var p = pointOnCurve(orion.t);
+          var el = document.getElementById("s3-orion");
+          if (el) el.setAttribute("transform", "translate(" + p.x + " " + p.y + ")");
+        }
+      }, S + 1.6);
+
+      tl.fromTo("#s3-card",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "expo.out" }, S + 2.4);
+
+      tl.fromTo("#s3-stars", { x: 0 }, { x: -22, duration: 8.6, ease: "none" }, S);
+
+      tl.set({}, {}, 60);
+
+      window.__timelines["scene-3"] = tl;
+    </script>
+  </body>
+</html>
